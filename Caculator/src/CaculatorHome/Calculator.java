@@ -60,9 +60,8 @@ public class Calculator extends JFrame {
 		setTitle("Calculator");
 		setLayout(null);
 		MenuMinhStandrad();
+		MenuMinhScientific();
 		ActionBtnMinhStandard();
-		// MenuMinhScientific();
-
 	}
 	public void MenuMinhStandrad() {
 
@@ -128,95 +127,95 @@ public class Calculator extends JFrame {
 		mniExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 	}
 	// FIXME chinh loi cua boder bg
-	// public void MenuMinhScientific() {
-	// txtSrc2 = new JTextField();
-	// add(txtSrc2);
-	// txtSrc2.setBounds(10, 10, 500, 60);
-	// txtSrc2.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-	// txtSrc2.setEnabled(false);
-	// mnBar = new JMenuBar();
-	// mneView = new JMenu("View");
-	// mneEdit = new JMenu("Edit");
-	// mneHelp = new JMenu("Help");
-	// mniStan = new JMenuItem("Standard");
-	// mniScien = new JMenuItem("Scientific");
-	// mniPro = new JMenuItem("Programmer");
-	// mniExit = new JMenuItem("Exit");
-	// mneView.add(mniStan);
-	// mneView.addSeparator();
-	// mneView.add(mniScien);
-	// mneView.addSeparator();
-	// mneView.add(mniPro);
-	// mneView.addSeparator();
-	// mneView.add(mniExit);
-	// mnBar.add(mneView);
-	// mnBar.add(mneEdit);
-	// mnBar.add(mneHelp);
-	// setJMenuBar(mnBar);
-	// mneView.setMnemonic(KeyEvent.VK_V);
-	// mneEdit.setMnemonic(KeyEvent.VK_E);
-	// mneHelp.setMnemonic(KeyEvent.VK_H);
-	// penScientific.setLayout(null);
-	// penSub.setLayout(null);
-	// y=0;
-	// Insets s = new Insets(1, 1, 1, 1);
-	// for (int i = 0; i < 6; i++) {
-	// x = 260;
-	// for (int j = 0; j < 5; j++) {
-	// btnBut[i][j] = new JButton(btn[i][j]);
-	// penScientific.add(btnBut[i][j]);
-	// btnBut[i][j].setBounds(x, y, w, h);
-	// btnBut[i][j].setMargin(s);
-	//
-	// x = x + d + w;
-	// }
-	// y = y + d + w;
-	// }
-	// y=w+d;
-	// for (int i = 0; i < 5; i++) {
-	// x=10;
-	// for (int j = 0; j < 5; j++) {
-	// btnBut2[i][j] =new JButton(btn2[i][j]);
-	// penScientific.add(btnBut2[i][j]);
-	// btnBut2[i][j].setBounds(x,y,w,h);
-	// btnBut2[i][j].setMargin(s);
-	// x=x+w+d;
-	// }
-	// y = y + d + w;
-	// }
-	// bgDeg = new JRadioButton("Degrees");
-	// bgRa = new JRadioButton("Radians");
-	// bgGra = new JRadioButton("Grads");
-	// bgSelect.add(bgDeg);
-	// bgSelect.add(bgGra);
-	// bgSelect.add(bgRa);
-	// penSub.add(bgDeg);
-	// penSub.add(bgRa);
-	// penSub.add(bgGra);
-	// bgDeg.setBounds(10,10,80,30);
-	// bgRa.setBounds(90,10,80,30);
-	// bgGra.setBounds(170,10,85,30);
-	// penSub.setBounds(10,0,245,30);
-	// penSub.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
-	// penScientific.add(penSub);
-	// this.add(penScientific);
-	// penScientific.setBounds(0, 80,550, 300);
-	// // penScientific.setBackground(Color.GREEN);
-	// btnBut[5][4].setVisible(false);
-	// btnBut[5][1].setVisible(false);
-	// btnBut[4][4].setSize(w, h + h + d);
-	// btnBut[5][0].setSize(w + w + d, h);
-	// mniExit.addActionListener(new ActionListener() {
-	//
-	// @Override
-	// public void actionPerformed(ActionEvent arg0) {
-	// // TODO Auto-generated method stub
-	// System.exit(0);
-	// }
-	// });
-	// mniExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
-	// ActionEvent.CTRL_MASK));
-	// }
+	 public void MenuMinhScientific() {
+	 txtSrc2 = new JTextField();
+	 add(txtSrc2);
+	 txtSrc2.setBounds(10, 10, 500, 60);
+	 txtSrc2.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+	 txtSrc2.setEnabled(false);
+	 mnBar = new JMenuBar();
+	 mneView = new JMenu("View");
+	 mneEdit = new JMenu("Edit");
+	 mneHelp = new JMenu("Help");
+	 mniStan = new JMenuItem("Standard");
+	 mniScien = new JMenuItem("Scientific");
+	 mniPro = new JMenuItem("Programmer");
+	 mniExit = new JMenuItem("Exit");
+	 mneView.add(mniStan);
+	 mneView.addSeparator();
+	 mneView.add(mniScien);
+	 mneView.addSeparator();
+	 mneView.add(mniPro);
+	 mneView.addSeparator();
+	 mneView.add(mniExit);
+	 mnBar.add(mneView);
+	 mnBar.add(mneEdit);
+	 mnBar.add(mneHelp);
+	 setJMenuBar(mnBar);
+	 mneView.setMnemonic(KeyEvent.VK_V);
+	 mneEdit.setMnemonic(KeyEvent.VK_E);
+	 mneHelp.setMnemonic(KeyEvent.VK_H);
+	 penScientific.setLayout(null);
+	 penSub.setLayout(null);
+	 y=0;
+	 Insets s = new Insets(1, 1, 1, 1);
+	 for (int i = 0; i < 6; i++) {
+	 x = 260;
+	 for (int j = 0; j < 5; j++) {
+	 btnBut[i][j] = new JButton(btn[i][j]);
+	 penScientific.add(btnBut[i][j]);
+	 btnBut[i][j].setBounds(x, y, w, h);
+	 btnBut[i][j].setMargin(s);
+	
+	 x = x + d + w;
+	 }
+	 y = y + d + w;
+	 }
+	 y=w+d;
+	 for (int i = 0; i < 5; i++) {
+	 x=10;
+	 for (int j = 0; j < 5; j++) {
+	 btnBut2[i][j] =new JButton(btn2[i][j]);
+	 penScientific.add(btnBut2[i][j]);
+	 btnBut2[i][j].setBounds(x,y,w,h);
+	 btnBut2[i][j].setMargin(s);
+	 x=x+w+d;
+	 }
+	 y = y + d + w;
+	 }
+	 bgDeg = new JRadioButton("Degrees");
+	 bgRa = new JRadioButton("Radians");
+	 bgGra = new JRadioButton("Grads");
+	 bgSelect.add(bgDeg);
+	 bgSelect.add(bgGra);
+	 bgSelect.add(bgRa);
+	 penSub.add(bgDeg);
+	 penSub.add(bgRa);
+	 penSub.add(bgGra);
+	 bgDeg.setBounds(10,10,80,30);
+	 bgRa.setBounds(90,10,80,30);
+	 bgGra.setBounds(170,10,85,30);
+	 penSub.setBounds(10,0,245,30);
+	 penSub.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
+	 penScientific.add(penSub);
+	 this.add(penScientific);
+	 penScientific.setBounds(0, 80,550, 300);
+	 // penScientific.setBackground(Color.GREEN);
+	 btnBut[5][4].setVisible(false);
+	 btnBut[5][1].setVisible(false);
+	 btnBut[4][4].setSize(w, h + h + d);
+	 btnBut[5][0].setSize(w + w + d, h);
+	 mniExit.addActionListener(new ActionListener() {
+	
+	 @Override
+	 public void actionPerformed(ActionEvent arg0) {
+	 // TODO Auto-generated method stub
+	 System.exit(0);
+	 }
+	 });
+	 mniExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+	
+	 }
 
 	public void ActionBtnMinhStandard() {
 		ActionListener bactUoin = new ActionListener() {
@@ -245,7 +244,13 @@ public class Calculator extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent g) {
 				// TODO Auto-generated method stub
-				if(g.getSource()==btnBut[5][3]){
+				if(g.getSource()==mniStan){
+					penStandard.setVisible(true);
+					penScientific.setVisible(false);
+				}else if(g.getSource()==mniScien){
+					penScientific.setVisible(true);
+					penStandard.setVisible(false);
+				}else if(g.getSource()==btnBut[5][3]){
 					Plus();
 				}else if(g.getSource()==btnBut[4][3]){
 					Minus();
@@ -273,14 +278,9 @@ public class Calculator extends JFrame {
 				btnBut[i][j].addActionListener(bAction);
 			}
 		}
-//		btnBut[5][3].addActionListener(bAction);
-//		btnBut[4][3].addActionListener(bAction);
-//		btnBut[3][3].addActionListener(bAction);
-//		btnBut[2][3].addActionListener(bAction);
-//		btnBut[4][4].addActionListener(bAction);
+		mniScien.addActionListener(bAction);
+		mniStan.addActionListener(bAction);
 	}
-
-
 	public void Plus() {
 		String Number1 = txtSrc.getText();
 		txtSrc.setText("");
