@@ -32,7 +32,7 @@ import org.omg.CORBA.CTX_RESTRICT_SCOPE;
  *
  */
 public class Calculator extends JFrame {
-	int MS,MR,MC;
+	int MS,MR,MC,bDele;
 	int x = 0, y = 50, w = 45, h = 45, d = 5;
 	JPanel penStandard = new JPanel();
 	JPanel penScientific = new JPanel();
@@ -263,6 +263,8 @@ public class Calculator extends JFrame {
 					bMR();
 				}else if(g.getSource()==btnBut[0][0]){
 					bMC();
+				}else if(g.getSource()==btnBut[1][0]){
+					bDelete();
 				}
 			}
 		};
@@ -340,6 +342,13 @@ public void bMR(){
 public void bMC(){
 	MS=0;
 }
+public void bDelete(){
+	String a= txtSrc.getText();
+	a=a.substring(0,a.length()-1);
+	txtSrc.setText(Integer.parseInt(a)+"");
+}
+ 
+
 
 	/**
 	 * @param args
