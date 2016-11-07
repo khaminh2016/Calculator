@@ -32,6 +32,7 @@ import org.omg.CORBA.CTX_RESTRICT_SCOPE;
  *
  */
 public class Calculator extends JFrame {
+	int MS,MR,MC;
 	int x = 0, y = 50, w = 45, h = 45, d = 5;
 	JPanel penStandard = new JPanel();
 	JPanel penScientific = new JPanel();
@@ -254,14 +255,27 @@ public class Calculator extends JFrame {
 					division();
 				}else if(g.getSource()==btnBut[4][4]){
 					EqualMinh();
+				}else if(g.getSource()==btnBut[1][1]){
+					butCE();
+				}else if(g.getSource()==btnBut[0][2]){
+					bMS();
+				}else if(g.getSource()==btnBut[0][1]){
+					bMR();
+				}else if(g.getSource()==btnBut[0][0]){
+					bMC();
 				}
 			}
 		};
-		btnBut[5][3].addActionListener(bAction);
-		btnBut[4][3].addActionListener(bAction);
-		btnBut[3][3].addActionListener(bAction);
-		btnBut[2][3].addActionListener(bAction);
-		btnBut[4][4].addActionListener(bAction);
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 5; j++) {
+				btnBut[i][j].addActionListener(bAction);
+			}
+		}
+//		btnBut[5][3].addActionListener(bAction);
+//		btnBut[4][3].addActionListener(bAction);
+//		btnBut[3][3].addActionListener(bAction);
+//		btnBut[2][3].addActionListener(bAction);
+//		btnBut[4][4].addActionListener(bAction);
 	}
 
 
@@ -312,7 +326,20 @@ public class Calculator extends JFrame {
 			txtSrc.setText(NumberChange / NumberChange2 + "");
 		}
 	}
-
+public void butCE(){
+	txtSrc.setText("");
+}
+public void bMS(){
+	String a;
+	a=txtSrc.getText();
+	MS=Integer.parseInt(a);
+}
+public void bMR(){
+	txtSrc.setText(MS+"");
+}
+public void bMC(){
+	MS=0;
+}
 
 	/**
 	 * @param args
