@@ -16,6 +16,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -35,16 +36,22 @@ public class Calculator extends JFrame {
 	int MS, MR, MC, bDele;
 	int x = 0, y = 50, w = 45, h = 45, d = 5;
 	int x2=0,y2=100;
-	int x3=0,y3=200 ;
+	int x3=0,y3=170 ;
 	JPanel penStandard = new JPanel();
 	JPanel penScientific = new JPanel();
 	JPanel penProGrammer = new JPanel();
-	JPanel penSub = new JPanel();
+	JPanel penSubScien = new JPanel();
+	JPanel penSubPro = new JPanel();
 	String[][] btn = { { "MC", "MR", "MS", "M+", "M-" }, { "<--", "CE", "C", "∓", "√" }, { "7", "8", "9", "/", "%" },
 			{ "4", "5", "6", "*", "1/x" }, { "1", "2", "3", "-", "=" }, { "0", "he", ",", "+", " " }, };
 	String[][] btn2 = { { " ", "Inv", "ln", "(", ")" }, { "Int", "sinh", "sin", "x2", "n!" },
 			{ "dms", "cosh", "cos", "xy", "y√x" }, { "Pi", "tanh", "tan", "x3", "3√x" },
 			{ "F-E", "Exp", "Mod", "log", "10x" }, };
+	String[] lbll={
+			"0000","0000","0000","0000","0000","0000","0000","0000"
+	};
+	JLabel lbllPro[] = new JLabel[8];
+	int xl=20,yl=90;
 	JButton[][] btnBut = new JButton[6][5];
 	JButton[][] btnBut2 = new JButton[5][5];
 	JButton[][] btnBut3 = new JButton[6][5];
@@ -64,7 +71,7 @@ public class Calculator extends JFrame {
 		setSize(400, 450);
 		setTitle("Calculator");
 		setLayout(null);
-		MenuMinhScientific();
+		MenuProGrammer();
 		ActionMenu();
 
 	}
@@ -195,7 +202,7 @@ public class Calculator extends JFrame {
 		mneEdit.setMnemonic(KeyEvent.VK_E);
 		mneHelp.setMnemonic(KeyEvent.VK_H);
 		penScientific.setLayout(null);
-		penSub.setLayout(null);
+		penSubScien.setLayout(null);
 	
 		Insets s = new Insets(1, 1, 1, 1);
 		for (int i = 0; i < 6; i++) {
@@ -229,15 +236,15 @@ public class Calculator extends JFrame {
 		bgSelect.add(bgDeg);
 		bgSelect.add(bgGra);
 		bgSelect.add(bgRa);
-		penSub.add(bgDeg);
-		penSub.add(bgRa);
-		penSub.add(bgGra);
+		penSubScien.add(bgDeg);
+		penSubScien.add(bgRa);
+		penSubScien.add(bgGra);
 		bgDeg.setBounds(5, 10, 75, 30);
 		bgRa.setBounds(80, 10, 75, 30);
 		bgGra.setBounds(160,10, 80, 30);
-		penSub.setBounds(10,100, 245,45);
-		penSub.setBorder(BorderFactory.createLineBorder(Color.BLUE, 1));
-		penScientific.add(penSub);
+		penSubScien.setBounds(10,100, 245,45);
+		penSubScien.setBorder(BorderFactory.createLineBorder(Color.BLUE, 1));
+		penScientific.add(penSubScien);
 		this.add(penScientific);
 		penScientific.setBounds(0,0, 550, 500);
 		// penScientific.setBackground(Color.GREEN);
@@ -288,13 +295,14 @@ public class Calculator extends JFrame {
 		mneEdit.setMnemonic(KeyEvent.VK_E);
 		mneHelp.setMnemonic(KeyEvent.VK_H);
 		penProGrammer.setLayout(null);
+		penSubPro.setLayout(null);
 		Insets s = new Insets(1, 1, 1, 1);
 
 		for (int i = 0; i < 6; i++) {
 			x3 = 260;
 			for (int j = 0; j < 5; j++) {
 				btnBut3[i][j] = new JButton(btn[i][j]);
-				penProGrammer.add(btnBut[i][j]);
+				penProGrammer.add(btnBut3[i][j]);
 				btnBut3[i][j].setBounds(x3, y3, w, h);
 				btnBut3[i][j].setMargin(s);
 
@@ -303,6 +311,15 @@ public class Calculator extends JFrame {
 			y3 = y3 + d + w;
 		}
 		y3 = w + d;
+		for (int i = 0; i <8; i++) {
+			lbllPro[i]=new JLabel(lbll[i]);
+			add(lbllPro[i]);
+			lbllPro[i].setBounds(xl,yl,w,h);
+			xl=xl+65;
+		}
+//		penSubPro.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
+//		penSubPro.setBounds(10,85,500,80);
+		penProGrammer.add(penSubPro);
 		this.add(penProGrammer);
 		penProGrammer.setBounds(0,0, 550, 500);
 		btnBut3[5][4].setVisible(false);
