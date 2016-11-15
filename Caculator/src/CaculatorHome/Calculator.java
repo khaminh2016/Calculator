@@ -62,6 +62,7 @@ public class Calculator extends JFrame {
 		MenuMinhStandrad();
 		MenuMinhScientific();
 		ActionBtnMinhStandard();
+		penScientific.setVisible(false);
 	}
 	public void MenuMinhStandrad() {
 
@@ -129,7 +130,7 @@ public class Calculator extends JFrame {
 	// FIXME chinh loi cua boder bg
 	 public void MenuMinhScientific() {
 	 txtSrc2 = new JTextField();
-	 add(txtSrc2);
+	 penScientific.add(txtSrc2);
 	 txtSrc2.setBounds(10, 10, 500, 60);
 	 txtSrc2.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
 	 txtSrc2.setEnabled(false);
