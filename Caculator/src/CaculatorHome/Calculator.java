@@ -79,13 +79,19 @@ public class Calculator extends JFrame {
 	JButton[][] btnProGram = new JButton[6][3];
 	int xbtnP= 110,ybtnP=170;
 	JRadioButton rProrame[] = new JRadioButton[4];
+	JRadioButton rProrame2[] = new JRadioButton[4];
 	String []rRadioPro = {
 			"Hex","Dec","Oct","Bin"
 	};
+	String[] rRadioPro2= {
+			"Qword","Dword","Word","Byte"
+	};
 	ButtonGroup bgSelecR = new ButtonGroup();
+	ButtonGroup bgSelecR2 = new ButtonGroup();
 	int xR=20,yR=170;
-	int xrS=20,yrS=5;
+	int xrS=10,yrS=5;
 	JPanel penRaPro = new JPanel();
+	JPanel penRaPro2 = new JPanel();
 	public Calculator() {
 		setSize(400, 450);
 		setTitle("Calculator");
@@ -315,6 +321,7 @@ public class Calculator extends JFrame {
 		mneHelp.setMnemonic(KeyEvent.VK_H);
 		penProGrammer.setLayout(null);
 		penRaPro.setLayout(null);
+		penRaPro2.setLayout(null);
 		Insets s = new Insets(1, 1, 1, 1);
 
 		for (int i = 0; i < 6; i++) {
@@ -332,9 +339,9 @@ public class Calculator extends JFrame {
 		y3 = w + d;
 		for (int i = 0; i <8; i++) {
 			lbllPro[i]=new JLabel(lbll[i]);
-			add(lbllPro[i]);
+			penProGrammer.add(lbllPro[i]);
 			lbllPro2[i] = new JLabel(lbll[i]);
-			add(lbllPro2[i]);
+			penProGrammer.add(lbllPro2[i]);
 			lbllPro[i].setBounds(xl,yl,w,h);
 			lbllPro2[i].setBounds(xl,yl+30,w,h);
 			xl=xl+65;
@@ -343,7 +350,7 @@ public class Calculator extends JFrame {
 			xbtnP=110;
 			for (int j = 0; j < 3; j++) {
 				btnProGram[i][j]=new JButton(btn3[i][j]);
-				add(btnProGram[i][j]);
+				penProGrammer.add(btnProGram[i][j]);
 				btnProGram[i][j].setMargin(s);
 				btnProGram[i][j].setBounds(xbtnP, ybtnP, w,h);
 				xbtnP=xbtnP+w+d;
@@ -366,8 +373,22 @@ public class Calculator extends JFrame {
 		
 		penRaPro.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
 		penRaPro.setBounds(xR,yR,w+40,145);
+		int xrS=10,yrS=5;
+		for (int i = 0; i <4; i++) {
+			rProrame2[i]= new JRadioButton(rRadioPro2[i]);
+			penRaPro2.add(rProrame2[i]);
+			rProrame2[i].setMargin(s);
+			bgSelecR2.add(rProrame2[i]);
+			rProrame2[i].setBounds(xrS,yrS,w+20,h);
+			yrS=yrS+30;
+		}
+		rProrame2[0].setSelected(true);
+		penRaPro2.setBounds(xR,yR+150,w+40,145);
+		penRaPro2.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
+		penProGrammer.add(penRaPro2);
 		penProGrammer.add(penRaPro);
 		this.add(penProGrammer);
+	
 		penProGrammer.setBounds(0,0, 550, 500);
 		btnBut3[5][4].setVisible(false);
 		btnBut3[5][1].setVisible(false);
