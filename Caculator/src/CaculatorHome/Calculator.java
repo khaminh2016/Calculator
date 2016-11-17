@@ -51,6 +51,7 @@ public class Calculator extends JFrame {
 			"0000","0000","0000","0000","0000","0000","0000","0000"
 	};
 	JLabel lbllPro[] = new JLabel[8];
+	JLabel lbllPro2[] = new JLabel[8];
 	int xl=20,yl=90;
 	JButton[][] btnBut = new JButton[6][5];
 	JButton[][] btnBut2 = new JButton[5][5];
@@ -66,7 +67,17 @@ public class Calculator extends JFrame {
 	int count = 0;
 	int NumberChange = 0;
 	int NumberChange2 = 0;
-
+	/** ProGramer  **/
+	String[][] btn3 ={
+			{" ","Mod","A"},
+			{"(",")","B"},
+			{"RoL","RoR","C"},
+			{"Or","Xor","D"},
+			{"Lsh","Rsh","E"},
+			{"Not","And","F"},
+	};
+	JButton[][] btnProGram = new JButton[6][3];
+	int xP= 110,yP=170;
 	public Calculator() {
 		setSize(400, 450);
 		setTitle("Calculator");
@@ -314,8 +325,22 @@ public class Calculator extends JFrame {
 		for (int i = 0; i <8; i++) {
 			lbllPro[i]=new JLabel(lbll[i]);
 			add(lbllPro[i]);
+			lbllPro2[i] = new JLabel(lbll[i]);
+			add(lbllPro2[i]);
 			lbllPro[i].setBounds(xl,yl,w,h);
+			lbllPro2[i].setBounds(xl,yl+30,w,h);
 			xl=xl+65;
+		}
+		for (int i = 0; i < 6; i++) {
+			xP=110;
+			for (int j = 0; j < 3; j++) {
+				btnProGram[i][j]=new JButton(btn3[i][j]);
+				add(btnProGram[i][j]);
+				btnProGram[i][j].setMargin(s);
+				btnProGram[i][j].setBounds(xP, yP, w,h);
+				xP=xP+w+d;
+			}
+			yP=yP+w+d;
 		}
 //		penSubPro.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
 //		penSubPro.setBounds(10,85,500,80);
