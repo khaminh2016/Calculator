@@ -34,7 +34,7 @@ import org.omg.CORBA.CTX_RESTRICT_SCOPE;
  */
 public class Calculator extends JFrame {
 	int MS, MR, MC, bDele;
-	int x = 0, y = 50, w = 45, h = 45, d = 5;
+	int x = 0, y = 70, w = 45, h = 45, d = 5;
 	int x2=0,y2=100;
 	int x3=0,y3=170 ;
 	JPanel penStandard = new JPanel();
@@ -96,8 +96,11 @@ public class Calculator extends JFrame {
 		setSize(400, 450);
 		setTitle("Calculator");
 		setLayout(null);
-		MenuProGrammer();
+
+		MenuMinhStandrad();
+		ActionBtnMinhStandard();
 		ActionMenu();
+		
 
 	}
 
@@ -120,6 +123,7 @@ public class Calculator extends JFrame {
 					penProGrammer.setVisible(false);
 				}else if(g.getSource()==mniPro){
 					MenuProGrammer();
+					MenuActionProGrammer();
 					penProGrammer.setVisible(true);
 					penStandard.setVisible(false);
 					penScientific.setVisible(false);
@@ -134,8 +138,8 @@ public class Calculator extends JFrame {
 	public void MenuMinhStandrad() {
 
 		txtSrc = new JTextField();
-		add(txtSrc);
-		txtSrc.setBounds(20, 10, 250, 60);
+		penStandard.add(txtSrc);
+		txtSrc.setBounds(0, 0, 250, 60);
 		txtSrc.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
 		txtSrc.setHorizontalAlignment(JTextField.RIGHT);
 		txtSrc.setEnabled(false);
@@ -165,7 +169,7 @@ public class Calculator extends JFrame {
 		mneEdit.setMnemonic(KeyEvent.VK_E);
 		mneHelp.setMnemonic(KeyEvent.VK_H);
 		penStandard.setLayout(null);
-		y = 0;
+		
 		Insets s = new Insets(1, 1, 1, 1);
 		for (int i = 0; i < 6; i++) {
 			x = 0;
@@ -179,8 +183,8 @@ public class Calculator extends JFrame {
 			y = y + d + w;
 		}
 		this.add(penStandard);
-		penStandard.setBounds(20, 80, 250, 300);
-		penStandard.setBackground(Color.BLACK);
+		penStandard.setBounds(20,0, 250, 500);
+	
 		btnBut[5][4].setVisible(false);
 		btnBut[5][1].setVisible(false);
 		btnBut[4][4].setSize(w, h + h + d);
@@ -431,13 +435,7 @@ public class Calculator extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent g) {
 				// TODO Auto-generated method stub
-				if (g.getSource() == mniStan) {
-					penStandard.setVisible(true);
-					penScientific.setVisible(false);
-				} else if (g.getSource() == mniScien) {
-					penScientific.setVisible(true);
-					penStandard.setVisible(false);
-				} else if (g.getSource() == btnBut[5][3]) {
+				if (g.getSource() == btnBut[5][3]) {
 					Plus();
 				} else if (g.getSource() == btnBut[4][3]) {
 					Minus();
@@ -465,10 +463,64 @@ public class Calculator extends JFrame {
 				btnBut[i][j].addActionListener(bAction);
 			}
 		}
-		mniScien.addActionListener(bAction);
-		mniStan.addActionListener(bAction);
+		
 	}
+	public void MenuActionProGrammer(){
+		ActionListener bactUoin = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent g) {
 
+				JButton btnReply = (JButton) g.getSource();
+				String bNumber = btnReply.getText();
+				String bCurrent = txtSrc3.getText();
+				if (bCurrent.equals("0")) {
+					txtSrc3.setText(bNumber);
+				} else {
+					txtSrc3.setText(bCurrent + bNumber);
+				}
+			}
+		};
+		// FIXME xem lai số 0
+		for (int i = 2; i < 5; i++) {
+			for (int j = 0; j < 3; j++) {
+				btnBut3[i][j].addActionListener(bactUoin);
+			}
+		}
+		btnBut3[5][0].addActionListener(bactUoin);
+		ActionListener bAction = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent g) {
+				// TODO Auto-generated method stub
+				if (g.getSource() == btnBut3[5][3]) {
+					Plus3();
+				} else if (g.getSource() == btnBut3[4][3]) {
+					Minus3();
+				} else if (g.getSource() == btnBut3[3][3]) {
+					Multi3();
+				} else if (g.getSource() == btnBut3[2][3]) {
+					division3();
+				} else if (g.getSource() == btnBut3[4][4]) {
+					EqualMinh3();
+				} else if (g.getSource() == btnBut3[1][1]) {
+					butCE3();
+				} else if (g.getSource() == btnBut3[0][2]) {
+					bMS3();
+				} else if (g.getSource() == btnBut3[0][1]) {
+					bMR3();
+				} else if (g.getSource() == btnBut3[0][0]) {
+					bMC3();
+				} else if (g.getSource() == btnBut3[1][0]) {
+					bDelete3();
+				}
+			}
+		};
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 5; j++) {
+				btnBut3[i][j].addActionListener(bAction);
+			}
+		}
+	}
 	public void Plus() {
 		String Number1 = txtSrc.getText();
 		txtSrc.setText("");
@@ -539,6 +591,78 @@ public class Calculator extends JFrame {
 		String a = txtSrc.getText();
 		a = a.substring(0, a.length() - 1);
 		txtSrc.setText(Integer.parseInt(a) + "");
+	}
+
+	public void Plus3() {
+		String Number1 = txtSrc3.getText();
+		txtSrc3.setText("");
+		NumberChange = Integer.parseInt(Number1);
+		count = 1;
+	}
+
+	public void Minus3() {
+		String Number1 = txtSrc3.getText();
+		txtSrc3.setText("");
+		NumberChange = Integer.parseInt(Number1);
+		count = 2;
+	}
+
+	public void Multi3() {
+		String Number1 = txtSrc3.getText();
+		txtSrc3.setText("");
+		NumberChange = Integer.parseInt(Number1);
+		count = 3;
+	}
+
+	public void division3() {
+		String Number1 = txtSrc3.getText();
+		txtSrc3.setText("");
+		NumberChange = Integer.parseInt(Number1);
+		count = 4;
+	}
+
+	public void EqualMinh3() {
+		if (count == 1) {
+			String Number2 = txtSrc3.getText();
+			NumberChange2 = Integer.parseInt(Number2);
+			txtSrc3.setText(NumberChange + NumberChange2 + "");
+		} else if (count == 2) {
+			String Number2 = txtSrc3.getText();
+			NumberChange2 = Integer.parseInt(Number2);
+			txtSrc3.setText(NumberChange - NumberChange2 + "");
+		} else if (count == 3) {
+			String Number2 = txtSrc3.getText();
+			NumberChange2 = Integer.parseInt(Number2);
+			txtSrc3.setText(NumberChange * NumberChange2 + "");
+		} else if (count == 4) {
+			String Number2 = txtSrc3.getText();
+			NumberChange2 = Integer.parseInt(Number2);
+			txtSrc3.setText(NumberChange / NumberChange2 + "");
+		}
+	}
+
+	public void butCE3() {
+		txtSrc3.setText("");
+	}
+
+	public void bMS3() {
+		String a;
+		a = txtSrc3.getText();
+		MS = Integer.parseInt(a);
+	}
+
+	public void bMR3() {
+		txtSrc3.setText(MS + "");
+	}
+
+	public void bMC3() {
+		MS = 0;
+	}
+
+	public void bDelete3() {
+		String a = txtSrc3.getText();
+		a = a.substring(0, a.length() - 1);
+		txtSrc3.setText(Integer.parseInt(a) + "");
 	}
 
 	/**
