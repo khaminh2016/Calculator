@@ -41,7 +41,7 @@ public class Calculator extends JFrame {
 	JPanel penScientific = new JPanel();
 	JPanel penProGrammer = new JPanel();
 	JPanel penSubScien = new JPanel();
-	JPanel penSubPro = new JPanel();
+
 	String[][] btn = { { "MC", "MR", "MS", "M+", "M-" }, { "<--", "CE", "C", "∓", "√" }, { "7", "8", "9", "/", "%" },
 			{ "4", "5", "6", "*", "1/x" }, { "1", "2", "3", "-", "=" }, { "0", "he", ",", "+", " " }, };
 	String[][] btn2 = { { " ", "Inv", "ln", "(", ")" }, { "Int", "sinh", "sin", "x2", "n!" },
@@ -77,7 +77,15 @@ public class Calculator extends JFrame {
 			{"Not","And","F"},
 	};
 	JButton[][] btnProGram = new JButton[6][3];
-	int xP= 110,yP=170;
+	int xbtnP= 110,ybtnP=170;
+	JRadioButton rProrame[] = new JRadioButton[4];
+	String []rRadioPro = {
+			"Hex","Dec","Oct","Bin"
+	};
+	ButtonGroup bgSelecR = new ButtonGroup();
+	int xR=20,yR=170;
+	int xrS=20,yrS=5;
+	JPanel penRaPro = new JPanel();
 	public Calculator() {
 		setSize(400, 450);
 		setTitle("Calculator");
@@ -306,7 +314,7 @@ public class Calculator extends JFrame {
 		mneEdit.setMnemonic(KeyEvent.VK_E);
 		mneHelp.setMnemonic(KeyEvent.VK_H);
 		penProGrammer.setLayout(null);
-		penSubPro.setLayout(null);
+		penRaPro.setLayout(null);
 		Insets s = new Insets(1, 1, 1, 1);
 
 		for (int i = 0; i < 6; i++) {
@@ -332,19 +340,33 @@ public class Calculator extends JFrame {
 			xl=xl+65;
 		}
 		for (int i = 0; i < 6; i++) {
-			xP=110;
+			xbtnP=110;
 			for (int j = 0; j < 3; j++) {
 				btnProGram[i][j]=new JButton(btn3[i][j]);
 				add(btnProGram[i][j]);
 				btnProGram[i][j].setMargin(s);
-				btnProGram[i][j].setBounds(xP, yP, w,h);
-				xP=xP+w+d;
+				btnProGram[i][j].setBounds(xbtnP, ybtnP, w,h);
+				xbtnP=xbtnP+w+d;
 			}
-			yP=yP+w+d;
+			ybtnP=ybtnP+w+d;
 		}
-//		penSubPro.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
-//		penSubPro.setBounds(10,85,500,80);
-		penProGrammer.add(penSubPro);
+		for (int i = 0; i < 6; i++) {
+			btnProGram[i][2].setEnabled(false);
+		}
+		btnProGram[0][0].setEnabled(false);
+		for (int i = 0; i < 4; i++) {
+			rProrame[i]= new JRadioButton(rRadioPro[i]);
+			penRaPro.add(rProrame[i]);
+			rProrame[i].setMargin(s);
+			bgSelecR.add(rProrame[i]);
+			rProrame[i].setBounds(xrS, yrS, w,h);
+			yrS=yrS+30;
+		}
+		rProrame[0].setSelected(true);
+		
+		penRaPro.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
+		penRaPro.setBounds(xR,yR,w+40,145);
+		penProGrammer.add(penRaPro);
 		this.add(penProGrammer);
 		penProGrammer.setBounds(0,0, 550, 500);
 		btnBut3[5][4].setVisible(false);
