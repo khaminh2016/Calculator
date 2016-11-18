@@ -54,6 +54,7 @@ public class Calculator extends JFrame {
 	JLabel lbllPro2[] = new JLabel[8];
 	int xl=20,yl=90;
 	JButton[][] btnBut = new JButton[6][5];
+	JButton[][] btnBut2Sci = new JButton[6][5];
 	JButton[][] btnBut2 = new JButton[5][5];
 	JButton[][] btnBut3 = new JButton[6][5];
 	JMenuBar mnBar;
@@ -96,9 +97,9 @@ public class Calculator extends JFrame {
 		setSize(400, 450);
 		setTitle("Calculator");
 		setLayout(null);
-
-		MenuMinhStandrad();
-		ActionBtnMinhStandard();
+		
+		MenuMinhScientific();
+		MenuActionScienti();
 		ActionMenu();
 		
 
@@ -118,6 +119,7 @@ public class Calculator extends JFrame {
 					penProGrammer.setVisible(false);
 				} else if (g.getSource() == mniScien) {
 					MenuMinhScientific();
+					MenuActionScienti();
 					penScientific.setVisible(true);
 					penStandard.setVisible(false);
 					penProGrammer.setVisible(false);
@@ -206,6 +208,8 @@ public class Calculator extends JFrame {
 		penScientific.add(txtSrc2);
 		txtSrc2.setBounds(10, 20, 500, 60);
 		txtSrc2.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+		Font f = txtSrc2.getFont();
+		txtSrc2.setFont(new Font(f.getName(), Font.BOLD, f.getSize() + 20));
 		txtSrc2.setHorizontalAlignment(JTextField.RIGHT);
 		txtSrc2.setEnabled(false);
 		mnBar = new JMenuBar();
@@ -237,10 +241,10 @@ public class Calculator extends JFrame {
 		for (int i = 0; i < 6; i++) {
 			x2 = 260;
 			for (int j = 0; j < 5; j++) {
-				btnBut[i][j] = new JButton(btn[i][j]);
-				penScientific.add(btnBut[i][j]);
-				btnBut[i][j].setBounds(x2, y2, w, h);
-				btnBut[i][j].setMargin(s);
+				btnBut2Sci[i][j] = new JButton(btn[i][j]);
+				penScientific.add(btnBut2Sci[i][j]);
+				btnBut2Sci[i][j].setBounds(x2, y2, w, h);
+				btnBut2Sci[i][j].setMargin(s);
 
 				x2 = x2 + d + w;
 			}
@@ -277,10 +281,10 @@ public class Calculator extends JFrame {
 		this.add(penScientific);
 		penScientific.setBounds(0,0, 550, 500);
 		// penScientific.setBackground(Color.GREEN);
-		btnBut[5][4].setVisible(false);
-		btnBut[5][1].setVisible(false);
-		btnBut[4][4].setSize(w, h + h + d);
-		btnBut[5][0].setSize(w + w + d, h);
+		btnBut2Sci[5][4].setVisible(false);
+		btnBut2Sci[5][1].setVisible(false);
+		btnBut2Sci[4][4].setSize(w, h + h + d);
+		btnBut2Sci[5][0].setSize(w + w + d, h);
 		mniExit.addActionListener(new ActionListener() {
 
 			@Override
@@ -466,6 +470,7 @@ public class Calculator extends JFrame {
 		
 	}
 	public void MenuActionProGrammer(){
+
 		ActionListener bactUoin = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent g) {
@@ -518,6 +523,63 @@ public class Calculator extends JFrame {
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 5; j++) {
 				btnBut3[i][j].addActionListener(bAction);
+			}
+		}
+	}
+	public void MenuActionScienti(){
+		ActionListener bactUoin = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent g) {
+
+				JButton btnReply = (JButton) g.getSource();
+				String bNumber = btnReply.getText();
+				String bCurrent = txtSrc2.getText();
+				if (bCurrent.equals("0")) {
+					txtSrc2.setText(bNumber);
+				} else {
+					txtSrc2.setText(bCurrent + bNumber);
+				}
+			}
+		};
+		// FIXME xem lai số 0
+		for (int i = 2; i < 5; i++) {
+			for (int j = 0; j < 3; j++) {
+				btnBut2Sci[i][j].addActionListener(bactUoin);
+			}
+		}
+		btnBut2Sci[5][0].addActionListener(bactUoin);
+		
+		ActionListener bAction = new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent g) {
+				// TODO Auto-generated method stub
+				if (g.getSource() == btnBut2Sci[5][3]) {
+					Plus2();
+				} else if (g.getSource() == btnBut2Sci[4][3]) {
+					Minus2();
+				} else if (g.getSource() == btnBut2Sci[3][3]) {
+					Multi2();
+				} else if (g.getSource() == btnBut2Sci[2][3]) {
+					division2();
+				} else if (g.getSource() == btnBut2Sci[4][4]) {
+					EqualMinh2();
+				} else if (g.getSource() == btnBut2Sci[1][1]) {
+					butCE2();
+				} else if (g.getSource() == btnBut2Sci[0][2]) {
+					bMS2();
+				} else if (g.getSource() == btnBut2Sci[0][1]) {
+					bMR2();
+				} else if (g.getSource() == btnBut2Sci[0][0]) {
+					bMC2();
+				} else if (g.getSource() == btnBut2Sci[1][0]) {
+					bDelete2();
+				}
+			}
+		};
+		for (int i = 0; i < 6; i++) {
+			for (int j = 0; j < 5; j++) {
+				btnBut2Sci[i][j].addActionListener(bAction);
 			}
 		}
 	}
@@ -663,6 +725,77 @@ public class Calculator extends JFrame {
 		String a = txtSrc3.getText();
 		a = a.substring(0, a.length() - 1);
 		txtSrc3.setText(Integer.parseInt(a) + "");
+	}
+	public void Plus2() {
+		String Number1 = txtSrc2.getText();
+		txtSrc2.setText("");
+		NumberChange = Integer.parseInt(Number1);
+		count = 1;
+	}
+
+	public void Minus2() {
+		String Number1 = txtSrc2.getText();
+		txtSrc2.setText("");
+		NumberChange = Integer.parseInt(Number1);
+		count = 2;
+	}
+
+	public void Multi2() {
+		String Number1 = txtSrc2.getText();
+		txtSrc2.setText("");
+		NumberChange = Integer.parseInt(Number1);
+		count = 3;
+	}
+
+	public void division2() {
+		String Number1 = txtSrc2.getText();
+		txtSrc2.setText("");
+		NumberChange = Integer.parseInt(Number1);
+		count = 4;
+	}
+
+	public void EqualMinh2() {
+		if (count == 1) {
+			String Number2 = txtSrc2.getText();
+			NumberChange2 = Integer.parseInt(Number2);
+			txtSrc2.setText(NumberChange + NumberChange2 + "");
+		} else if (count == 2) {
+			String Number2 = txtSrc2.getText();
+			NumberChange2 = Integer.parseInt(Number2);
+			txtSrc2.setText(NumberChange - NumberChange2 + "");
+		} else if (count == 3) {
+			String Number2 = txtSrc2.getText();
+			NumberChange2 = Integer.parseInt(Number2);
+			txtSrc2.setText(NumberChange * NumberChange2 + "");
+		} else if (count == 4) {
+			String Number2 = txtSrc2.getText();
+			NumberChange2 = Integer.parseInt(Number2);
+			txtSrc2.setText(NumberChange / NumberChange2 + "");
+		}
+	}
+
+	public void butCE2() {
+		txtSrc2.setText("");
+	}
+
+	public void bMS2() {
+		String a;
+		a = txtSrc2.getText();
+		MS = Integer.parseInt(a);
+	}
+
+	public void bMR2() {
+		txtSrc.setText(MS + "");
+	}
+
+	public void bMC2() {
+		MS = 0;
+	}
+
+	public void bDelete2() {
+		String a = txtSrc2.getText();
+		a = a.substring(0, a.length() - 1);
+		txtSrc2.setText(Integer.parseInt(a) + "");
 	}
 
 	/**
