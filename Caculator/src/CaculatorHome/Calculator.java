@@ -98,8 +98,8 @@ public class Calculator extends JFrame {
 		setTitle("Calculator");
 		setLayout(null);
 		
-		MenuMinhScientific();
-		MenuActionScienti();
+		MenuMinhStandrad();
+		MenuActionStandard();
 		ActionMenu();
 		
 
@@ -113,7 +113,7 @@ public class Calculator extends JFrame {
 				// TODO Auto-generated method stub
 				if (g.getSource() == mniStan) {
 					MenuMinhStandrad();
-					ActionBtnMinhStandard();
+					MenuActionStandard();
 					penScientific.setVisible(false);
 					penStandard.setVisible(true);
 					penProGrammer.setVisible(false);
@@ -412,7 +412,7 @@ public class Calculator extends JFrame {
 		});
 		mniExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 	}
-	public void ActionBtnMinhStandard() {
+	public void MenuActionStandard() {
 		ActionListener bactUoin = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent g) {
