@@ -35,8 +35,8 @@ import org.omg.CORBA.CTX_RESTRICT_SCOPE;
 public class Calculator extends JFrame {
 	int MS, MR, MC, bDele;
 	int x = 0, y = 70, w = 45, h = 45, d = 5;
-	int x2=0,y2=100;
-	int x3=0,y3=170 ;
+	int x2 = 0, y2 = 100;
+	int x3 = 0, y3 = 170;
 	JPanel penStandard = new JPanel();
 	JPanel penScientific = new JPanel();
 	JPanel penProGrammer = new JPanel();
@@ -47,12 +47,10 @@ public class Calculator extends JFrame {
 	String[][] btn2 = { { " ", "Inv", "ln", "(", ")" }, { "Int", "sinh", "sin", "x2", "n!" },
 			{ "dms", "cosh", "cos", "xy", "y√x" }, { "Pi", "tanh", "tan", "x3", "3√x" },
 			{ "F-E", "Exp", "Mod", "log", "10x" }, };
-	String[] lbll={
-			"0000","0000","0000","0000","0000","0000","0000","0000"
-	};
+	String[] lbll = { "0000", "0000", "0000", "0000", "0000", "0000", "0000", "0000" };
 	JLabel lbllPro[] = new JLabel[8];
 	JLabel lbllPro2[] = new JLabel[8];
-	int xl=20,yl=90;
+	int xl = 20, yl = 90;
 	JButton[][] btnBut = new JButton[6][5];
 	JButton[][] btnBut2Sci = new JButton[6][5];
 	JButton[][] btnBut2 = new JButton[5][5];
@@ -65,43 +63,35 @@ public class Calculator extends JFrame {
 	JTextField txtSrc3;
 	JRadioButton bgDeg, bgRa, bgGra;
 	ButtonGroup bgSelect = new ButtonGroup();
-	int count = 0;
-	int NumberChange = 0;
-	int NumberChange2 = 0;
-	/** ProGramer  **/
-	String[][] btn3 ={
-			{" ","Mod","A"},
-			{"(",")","B"},
-			{"RoL","RoR","C"},
-			{"Or","Xor","D"},
-			{"Lsh","Rsh","E"},
-			{"Not","And","F"},
-	};
+	double count = 0;
+	double NumberChange = 0;
+	double NumberChange2 = 0;
+	/** ProGramer **/
+	String[][] btn3 = { { " ", "Mod", "A" }, { "(", ")", "B" }, { "RoL", "RoR", "C" }, { "Or", "Xor", "D" },
+			{ "Lsh", "Rsh", "E" }, { "Not", "And", "F" }, };
 	JButton[][] btnProGram = new JButton[6][3];
-	int xbtnP= 110,ybtnP=170;
+	int xbtnP = 110, ybtnP = 170;
 	JRadioButton rProrame[] = new JRadioButton[4];
 	JRadioButton rProrame2[] = new JRadioButton[4];
-	String []rRadioPro = {
-			"Hex","Dec","Oct","Bin"
-	};
-	String[] rRadioPro2= {
-			"Qword","Dword","Word","Byte"
-	};
+	String[] rRadioPro = { "Hex", "Dec", "Oct", "Bin" };
+	String[] rRadioPro2 = { "Qword", "Dword", "Word", "Byte" };
 	ButtonGroup bgSelecR = new ButtonGroup();
 	ButtonGroup bgSelecR2 = new ButtonGroup();
-	int xR=20,yR=170;
-	int xrS=10,yrS=5;
+	int xR = 20, yR = 170;
+	int xrS = 10, yrS = 5;
 	JPanel penRaPro = new JPanel();
 	JPanel penRaPro2 = new JPanel();
+
+	/** Standart */
+
 	public Calculator() {
 		setSize(400, 450);
 		setTitle("Calculator");
 		setLayout(null);
-		
+
 		MenuMinhStandrad();
 		MenuActionStandard();
 		ActionMenu();
-		
 
 	}
 
@@ -123,7 +113,7 @@ public class Calculator extends JFrame {
 					penScientific.setVisible(true);
 					penStandard.setVisible(false);
 					penProGrammer.setVisible(false);
-				}else if(g.getSource()==mniPro){
+				} else if (g.getSource() == mniPro) {
 					MenuProGrammer();
 					MenuActionProGrammer();
 					penProGrammer.setVisible(true);
@@ -171,7 +161,7 @@ public class Calculator extends JFrame {
 		mneEdit.setMnemonic(KeyEvent.VK_E);
 		mneHelp.setMnemonic(KeyEvent.VK_H);
 		penStandard.setLayout(null);
-		
+
 		Insets s = new Insets(1, 1, 1, 1);
 		for (int i = 0; i < 6; i++) {
 			x = 0;
@@ -185,8 +175,8 @@ public class Calculator extends JFrame {
 			y = y + d + w;
 		}
 		this.add(penStandard);
-		penStandard.setBounds(20,0, 250, 500);
-	
+		penStandard.setBounds(20, 0, 250, 500);
+
 		btnBut[5][4].setVisible(false);
 		btnBut[5][1].setVisible(false);
 		btnBut[4][4].setSize(w, h + h + d);
@@ -236,7 +226,7 @@ public class Calculator extends JFrame {
 		mneHelp.setMnemonic(KeyEvent.VK_H);
 		penScientific.setLayout(null);
 		penSubScien.setLayout(null);
-	
+
 		Insets s = new Insets(1, 1, 1, 1);
 		for (int i = 0; i < 6; i++) {
 			x2 = 260;
@@ -274,12 +264,12 @@ public class Calculator extends JFrame {
 		penSubScien.add(bgGra);
 		bgDeg.setBounds(5, 10, 75, 30);
 		bgRa.setBounds(80, 10, 75, 30);
-		bgGra.setBounds(160,10, 80, 30);
-		penSubScien.setBounds(10,100, 245,45);
+		bgGra.setBounds(160, 10, 80, 30);
+		penSubScien.setBounds(10, 100, 245, 45);
 		penSubScien.setBorder(BorderFactory.createLineBorder(Color.BLUE, 1));
 		penScientific.add(penSubScien);
 		this.add(penScientific);
-		penScientific.setBounds(0,0, 550, 500);
+		penScientific.setBounds(0, 0, 550, 500);
 		// penScientific.setBackground(Color.GREEN);
 		btnBut2Sci[5][4].setVisible(false);
 		btnBut2Sci[5][1].setVisible(false);
@@ -296,7 +286,8 @@ public class Calculator extends JFrame {
 		mniExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 
 	}
-	public void MenuProGrammer(){
+
+	public void MenuProGrammer() {
 		txtSrc3 = new JTextField();
 		penProGrammer.add(txtSrc3);
 		txtSrc3.setBounds(10, 20, 500, 60);
@@ -345,59 +336,59 @@ public class Calculator extends JFrame {
 			y3 = y3 + d + w;
 		}
 		y3 = w + d;
-		for (int i = 0; i <8; i++) {
-			lbllPro[i]=new JLabel(lbll[i]);
+		for (int i = 0; i < 8; i++) {
+			lbllPro[i] = new JLabel(lbll[i]);
 			penProGrammer.add(lbllPro[i]);
 			lbllPro2[i] = new JLabel(lbll[i]);
 			penProGrammer.add(lbllPro2[i]);
-			lbllPro[i].setBounds(xl,yl,w,h);
-			lbllPro2[i].setBounds(xl,yl+30,w,h);
-			xl=xl+65;
+			lbllPro[i].setBounds(xl, yl, w, h);
+			lbllPro2[i].setBounds(xl, yl + 30, w, h);
+			xl = xl + 65;
 		}
 		for (int i = 0; i < 6; i++) {
-			xbtnP=110;
+			xbtnP = 110;
 			for (int j = 0; j < 3; j++) {
-				btnProGram[i][j]=new JButton(btn3[i][j]);
+				btnProGram[i][j] = new JButton(btn3[i][j]);
 				penProGrammer.add(btnProGram[i][j]);
 				btnProGram[i][j].setMargin(s);
-				btnProGram[i][j].setBounds(xbtnP, ybtnP, w,h);
-				xbtnP=xbtnP+w+d;
+				btnProGram[i][j].setBounds(xbtnP, ybtnP, w, h);
+				xbtnP = xbtnP + w + d;
 			}
-			ybtnP=ybtnP+w+d;
+			ybtnP = ybtnP + w + d;
 		}
 		for (int i = 0; i < 6; i++) {
 			btnProGram[i][2].setEnabled(false);
 		}
 		btnProGram[0][0].setEnabled(false);
 		for (int i = 0; i < 4; i++) {
-			rProrame[i]= new JRadioButton(rRadioPro[i]);
+			rProrame[i] = new JRadioButton(rRadioPro[i]);
 			penRaPro.add(rProrame[i]);
 			rProrame[i].setMargin(s);
 			bgSelecR.add(rProrame[i]);
-			rProrame[i].setBounds(xrS, yrS, w,h);
-			yrS=yrS+30;
+			rProrame[i].setBounds(xrS, yrS, w, h);
+			yrS = yrS + 30;
 		}
 		rProrame[0].setSelected(true);
-		
-		penRaPro.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
-		penRaPro.setBounds(xR,yR,w+40,145);
-		int xrS=10,yrS=5;
-		for (int i = 0; i <4; i++) {
-			rProrame2[i]= new JRadioButton(rRadioPro2[i]);
+
+		penRaPro.setBorder(BorderFactory.createLineBorder(Color.BLUE, 1));
+		penRaPro.setBounds(xR, yR, w + 40, 145);
+		int xrS = 10, yrS = 5;
+		for (int i = 0; i < 4; i++) {
+			rProrame2[i] = new JRadioButton(rRadioPro2[i]);
 			penRaPro2.add(rProrame2[i]);
 			rProrame2[i].setMargin(s);
 			bgSelecR2.add(rProrame2[i]);
-			rProrame2[i].setBounds(xrS,yrS,w+20,h);
-			yrS=yrS+30;
+			rProrame2[i].setBounds(xrS, yrS, w + 20, h);
+			yrS = yrS + 30;
 		}
 		rProrame2[0].setSelected(true);
-		penRaPro2.setBounds(xR,yR+150,w+40,145);
-		penRaPro2.setBorder(BorderFactory.createLineBorder(Color.BLUE,1));
+		penRaPro2.setBounds(xR, yR + 150, w + 40, 145);
+		penRaPro2.setBorder(BorderFactory.createLineBorder(Color.BLUE, 1));
 		penProGrammer.add(penRaPro2);
 		penProGrammer.add(penRaPro);
 		this.add(penProGrammer);
-	
-		penProGrammer.setBounds(0,0, 550, 500);
+
+		penProGrammer.setBounds(0, 0, 550, 500);
 		btnBut3[5][4].setVisible(false);
 		btnBut3[5][1].setVisible(false);
 		btnBut3[4][4].setSize(w, h + h + d);
@@ -412,6 +403,7 @@ public class Calculator extends JFrame {
 		});
 		mniExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
 	}
+
 	public void MenuActionStandard() {
 		ActionListener bactUoin = new ActionListener() {
 			@Override
@@ -420,11 +412,13 @@ public class Calculator extends JFrame {
 				JButton btnReply = (JButton) g.getSource();
 				String bNumber = btnReply.getText();
 				String bCurrent = txtSrc.getText();
+
 				if (bCurrent.equals("0")) {
 					txtSrc.setText(bNumber);
 				} else {
 					txtSrc.setText(bCurrent + bNumber);
 				}
+
 			}
 		};
 		// FIXME xem lai số 0
@@ -459,6 +453,10 @@ public class Calculator extends JFrame {
 					bMC();
 				} else if (g.getSource() == btnBut[1][0]) {
 					bDelete();
+				} else if (g.getSource() == btnBut[3][4]) {
+					xahihi();
+				} else if(g.getSource()== btnBut[1][4]){
+					suiqt();
 				}
 			}
 		};
@@ -467,9 +465,10 @@ public class Calculator extends JFrame {
 				btnBut[i][j].addActionListener(bAction);
 			}
 		}
-		
+
 	}
-	public void MenuActionProGrammer(){
+
+	public void MenuActionProGrammer() {
 
 		ActionListener bactUoin = new ActionListener() {
 			@Override
@@ -526,7 +525,8 @@ public class Calculator extends JFrame {
 			}
 		}
 	}
-	public void MenuActionScienti(){
+
+	public void MenuActionScienti() {
 		ActionListener bactUoin = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent g) {
@@ -548,7 +548,7 @@ public class Calculator extends JFrame {
 			}
 		}
 		btnBut2Sci[5][0].addActionListener(bactUoin);
-		
+
 		ActionListener bAction = new ActionListener() {
 
 			@Override
@@ -574,6 +574,10 @@ public class Calculator extends JFrame {
 					bMC2();
 				} else if (g.getSource() == btnBut2Sci[1][0]) {
 					bDelete2();
+				} else if (g.getSource() == btnBut2Sci[3][4]) {
+					xahihi2();
+				} else if(g.getSource()==btnBut2Sci[1][4]){
+					suiqt2();
 				}
 			}
 		};
@@ -583,6 +587,36 @@ public class Calculator extends JFrame {
 			}
 		}
 	}
+
+	public void xahihi() {
+		String s1 = txtSrc.getText();
+		double Number = Double.parseDouble(s1);
+		double test =  1/ Number;
+		txtSrc.setText(String.format("%.4f", test));
+		txtSrc.requestFocus();
+
+	}
+ public void suiqt(){
+	 String s1 =txtSrc.getText();
+	 double Number = Double.parseDouble(s1);
+	 double scan =Math.sqrt(Number);
+		txtSrc.setText(String.format("%.4f", scan));
+ }
+ public void suiqt2(){
+	 String s1 =txtSrc2.getText();
+	 double Number = Double.parseDouble(s1);
+	 double scan =Math.sqrt(Number);
+		txtSrc2.setText(String.format("%.4f", scan));
+ }
+	public void xahihi2() {
+		String s1 = txtSrc2.getText();
+		double Number = Double.parseDouble(s1);
+		double test = 1 / Number;
+		txtSrc2.setText(String.format("%.4f", test));
+		txtSrc2.requestFocus();
+
+	}
+
 	public void Plus() {
 		String Number1 = txtSrc.getText();
 		txtSrc.setText("");
@@ -726,6 +760,7 @@ public class Calculator extends JFrame {
 		a = a.substring(0, a.length() - 1);
 		txtSrc3.setText(Integer.parseInt(a) + "");
 	}
+
 	public void Plus2() {
 		String Number1 = txtSrc2.getText();
 		txtSrc2.setText("");
